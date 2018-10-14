@@ -51,21 +51,19 @@ export default class DebugLogger extends Logger implements ag.Logger {
       this.namespace.map((str: string) => `[${DebugLogger.formatNamespace(str, theme)}]`).join('')
     )
 
-    // Extra namespace [SomeClass]
-    message.replace(/^([\w\s[\]]\s*)?\[([\w]+)]/g, (all, prev, match) => {
-      return `${prev || ''}[${DebugLogger.formatNamespace(match, theme)}]`
-    })
-    // Callable: someFunction()
-    message.replace(/([.\w]+)\(\)/g, (all, match) => {
-      return `${DebugLogger.formatCallable(match, theme)}()`
-    })
-    // Quoted: "someText"
-    message.replace(/\s"([.:\w\d]+)"/, (all, match) => {
-      return `"${DebugLogger.formatQuoted(match, theme)}"`
-    })
-    parts.push(message)
+    parts.push(message
+      .replace(/^([\w\s[\]]\s*)?\[([\w]+)]/g, (all, prev, match) => { // [SomeClass]
+        return `${prev || ''}[${DebugLogger.formatNamespace(match, theme)}]`
+      })
+      .replace(/([.\w]+)\(\)/g, (all, match) => { // someFunction()
+        return `${DebugLogger.formatCallable(match, theme)}()`
+      })
+      .replace(/\s"([.:\w\d]+)"/, (all, match) => { // "someText"
+        return `"${DebugLogger.formatQuoted(match, theme)}"`
+      })
+    )
 
-    return parts.join('')
+    return parts.join(' ')
   }
 
   protected log (level: LogLevelConfig, message: any) {
