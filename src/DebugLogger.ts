@@ -59,7 +59,7 @@ export default class DebugLogger extends Logger implements ag.Logger {
         return `${DebugLogger.formatCallable(match, theme)}()`
       })
       .replace(/\s"([.:\w\d]+)"/, (all, match) => { // "someText"
-        return `"${DebugLogger.formatQuoted(match, theme)}"`
+        return ` "${DebugLogger.formatQuoted(match, theme)}"`
       })
     )
 
