@@ -4,7 +4,6 @@ import chalk from 'chalk'
 import * as createLogger from 'debug'
 import { injectable } from 'inversify'
 import * as moment from 'moment'
-import 'reflect-metadata'
 import THEME, { LogLevelTheme } from './theme'
 
 const writeLog = createLogger('airgram')
@@ -48,9 +47,9 @@ export default class DebugLogger extends Logger implements ag.Logger {
       parts.push(DebugLogger.formatTime(moment().format(DebugLogger.TIME_FORMAT), theme))
     }
 
-    this.namespace.forEach((str: string) => {
-      parts.push(`[${DebugLogger.formatNamespace(str, theme)}]`)
-    })
+    parts.push(
+      this.namespace.map((str: string) => `[${DebugLogger.formatNamespace(str, theme)}]`).join('')
+    )
 
     // Extra namespace [SomeClass]
     message.replace(/^([\w\s[\]]\s*)?\[([\w]+)]/g, (all, prev, match) => {

@@ -22,10 +22,10 @@
   "repository": "https://github.com/airgram/airgram-debug",
   "dependencies": {
     "airgram": "^0.1.1",
+    "chalk": "^2.4.1",
+    "debug": "^4.1.0",
     "inversify": "^4.13.0",
-    "inversify-binding-decorators": "^4.0.0",
-    "moment": "^2.22.2",
-    "reflect-metadata": "^0.1.12"
+    "moment": "^2.22.2"
   },
   "devDependencies": {
     "@types/node": "^10.11.7",
