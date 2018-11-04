@@ -24,7 +24,7 @@
     "airgram": "^0.1.1",
     "chalk": "^2.4.1",
     "debug": "^4.1.0",
-    "inversify": "^4.13.0",
+    "inversify": "^5.0.1",
     "moment": "^2.22.2"
   },
   "devDependencies": {
