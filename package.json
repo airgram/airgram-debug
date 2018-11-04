@@ -21,7 +21,7 @@
   "license": "GPL-3.0",
   "repository": "https://github.com/airgram/airgram-debug",
   "dependencies": {
-    "airgram": "^0.1.1",
+    "airgram": "^0.1.5",
     "chalk": "^2.4.1",
     "debug": "^4.1.0",
     "inversify": "^5.0.1",
